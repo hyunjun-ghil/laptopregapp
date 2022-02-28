@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="com.kdnavien.crmcn.ussales.dao.USSalesDAO"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.KD.laptopRegApp.service.laptopService"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,110 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.84.0">
+<title>Signin Template · Bootstrap v5.0</title>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/signin.css" rel="stylesheet">
+
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+<!-- Custom styles for this template -->
+</head>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Search Customer</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="frame">
+					<div class="center">
+						<input id="searchInput" placeholder="typing customer name">
+					</div>
+					<div id="customerSelected"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" id="modalSelectBtn">Select</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<body class="text-center">
+
+	<main class="form-signin">
+		<form>
+			<img class="mb-4" src="/image/kd.png" alt="" width="72" height="57">
+			<h1 class="h3 mb-3 fw-normal">
+				재택근무 노트북 </br> 등록 페이지
+			</h1>
+
+			<div class="form-floating">
+				<input type="userid" class="form-control" id="floatingInput"> <label for="floatingInput">사용자 사번</label>
+			</div>
+			<div>
+				<div style="display: inline-flex;">
+					<label class="font-weight-bolder" style="width: 100px; padding-top: 10px;">고객명</label> <input type="text" class="form-control" id="search_custnm" name="search_custnm" style="width: 172px; margin: 2px;">
+					<button type="button" class="btn btn-primary btn-xs" id="searchBtn" name="searchBtn" value="검색" style="align: right;" data-toggle="modal" data-target="#myModal">Search</button>
+				</div>
+			</div>
+			<div>
+
+				<div class="form-floating">
+					<input type="userdept" class="form-control" id="floatingDept"> <label for="floatingDept">사용자 부서</label>
+				</div>
+				<div class="form-floating">
+					<input type="usernm" class="form-control" id="floatingName"> <label for="floatingName">사용자 이름</label>
+				</div>
+				<div class="form-floating">
+					<input type="serialnumber" class="form-control" id="floatingSerialNumber"> <label for="floatingSerialNumber">Password</label>
+				</div>
+
+				<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+				<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+		</form>
+	</main>
+
+
+
+</body>
+</html>

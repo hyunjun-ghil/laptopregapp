@@ -1,0 +1,228 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/signin.css" rel="stylesheet">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+<link rel="stylesheet" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="/css/ui.jqgrid.css" />
+
+
+<script src="/js/i18n/grid.locale-kr.js" type="text/javascript"></script>
+<script src="/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script>
+	jQuery.browser = {};
+	(function() {
+		jQuery.browser.msie = false;
+		jQuery.browser.version = 0;
+		if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+			jQuery.browser.msie = true;
+			jQuery.browser.version = RegExp.$1;
+		}
+	})();
+</script>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.84.0">
+<title>Signin Template · Bootstrap v5.0</title>
+
+
+<!-- Bootstrap core CSS -->
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+.ui-jqgrid {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.div-label {
+	float: leff;
+	display: inline-flex;
+	margin: 5px;
+}
+
+.form-signin {
+	width: 600px;
+}
+
+.input-label {
+	width: 200px;
+}
+</style>
+<!-- Custom styles for this template -->
+</head>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Search Customer</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="frame">
+					<div class="center">
+						<input id="UserNM" placeholder="typing customer name">
+						<button type="button" class="btn btn-primary" id="searchBtn">Search</button>
+					</div>
+					<div class="center">
+						<table id="jqGrid"></table>
+						<div id="jqGridPager"></div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" id="modalSelectBtn">Select</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<body class="text-center">
+	<main class="form-signin">
+	<form>
+		<img class="mb-4" src="/image/kd.png" alt="" width="72" height="57">
+		<h1 class="h3 mb-3 fw-normal">
+			재택근무 노트북 </br> 등록 페이지
+		</h1>
+		<div>
+			<button type="button" class="w-100 btn btn-lg btn-secondary" id="searchBtn" name="searchBtn" value="검색" style="align: right;" data-toggle="modal" data-target="#myModal">Search</button>
+		</div>
+		<div class="div-label">
+			<label class="input-label">사용자 사번</label> <input type="userid" class="form-control" id="UserID">
+		</div>
+		<div class="div-label">
+			<label class="input-label">사용자 부서</label> <input type="userdept" class="form-control" id="UserDept">
+		</div>
+		<div class="div-label">
+			<label class="input-label">사용자 이름</label> <input type="usernm" class="form-control" id="UserName">
+		</div>
+		<div class="div-label">
+			<label class="input-label">S/N</label> <input type="serialnumber" class="form-control" id="Serial">
+		</div>
+		<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+		<p class="mt-5 mb-3 text-muted">&copy; 2019–2022</p>
+	</form>
+	</main>
+
+</body>
+
+<script type="text/javascript">
+	$("#searchBtn").on("click", function(e) { //KD/파트너
+		if ($("#UserNM").val()=="") {
+			alert("이름을 입력해주세요.");
+		} else {
+			var listData;
+			$.ajax({
+				url : "/searchUser.do",
+				type : "post",
+				data : { "UserNM" : $("#UserNM").val() },
+				dataType : "json",
+				loadtext : "loading...",
+				contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+				async : false,
+				success : function(data) {
+					var i=0;
+					$("#jqGrid").clearGridData();
+					$(data).each(function(){
+						var rowdata = {UserID:this.UserID, UserNM:this.UserNM, DEPTNM:this.DEPTNM, Seq:this.Seq};
+						console.log(rowdata);
+						jQuery("#jqGrid").jqGrid('addRowData',i,rowdata);
+					});
+					$("#jqGrid").jqGrid('setGridParam', {
+						data : data.listData
+					});
+					$("#jqGrid").trigger('reloadGrid');
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                    console.log(XMLHttpRequest);
+                }
+			});
+		}
+	});
+
+	/* $("#search_orderno").change(function(){
+		if($("#search_orderno").val() != ""){
+			$("#search_custnm").val("");
+			$("#search_custnm").attr("readonly", true);
+			$("#search_custno").val("");
+			$("#search_custno").attr("readonly", true);
+		}else{
+			$("#search_custnm").removeAttr("readonly");
+			$("#search_custno").removeAttr("readonly");
+		}
+	}); */
+
+	var jsonData;
+
+	$(document).ready(function() {
+		$("#jqGrid").jqGrid({
+			mtype : "GET",
+			datatype : "local",
+			colNames : [ 'Seq', '사번', '이름', '부서', ],
+			colModel : [ {
+				name : 'Seq',
+				index : 'Seq',
+				key : true,
+				width : 50
+			}, {
+				name : 'UserID',
+				index : 'User ID',
+				width : 100
+			}, {
+				name : 'UserNM',
+				index : 'UserNM',
+				width : 100
+			}, {
+				name : 'DEPTNM',
+				index : 'DEPTNM',
+				width : 150
+			} ],
+			viewrecords : true,
+			height : 230,
+			rowNum : 10,
+			rowList : [ 10, 20, 30 ],
+			pager : "#jqGridPager"
+		});
+
+		//다시 로드 
+		$("#jqGrid").trigger('reloadGrid');
+
+	});
+</script>
+<input type="hidden" id="modal_userid" name="modal_userid">
+<input type="hidden" id="modal_username" name="modal_username">
+<input type="hidden" id="modal_deptname" name="modal_deptname">
+</html>

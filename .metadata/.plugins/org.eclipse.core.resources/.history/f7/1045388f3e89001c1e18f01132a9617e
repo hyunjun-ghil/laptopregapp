@@ -1,0 +1,28 @@
+package com.KD.laptopRegApp.service;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.kdnavien.crmcn.ussales.dao.USSalesDAO;
+
+@Service("USSalesService")
+public class USSalesImpl implements USSalesService {
+
+	@Resource(name = "USSalesDAO")
+	private USSalesDAO USSalesDAO;
+
+
+	public List<Map<String, Object>> selectUserInform(Map<String, Object> map) throws Exception {
+		return USSalesDAO.selectUserInform(map);
+	}
+	
+	public List<Map<String, Object>> selectCustomerInform() throws Exception {
+		return USSalesDAO.selectCustomerInform();
+	}
+
+
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="HistoryTableProvider.SVNHistoryPage.Revision" value="88"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Date" value="218"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Author" value="174"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Comment" value="436"/>
+	<item key="CommitDialog.weights.0" value="500"/>
+	<item key="CommitDialog.weights.1" value="500"/>
+	<item key="CommitDialog.location.x" value="132"/>
+	<item key="CommitDialog.location.y" value="0"/>
+	<item key="CommitDialog.size.x" value="1417"/>
+	<item key="CommitDialog.size.y" value="1010"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://128.5.0.86/svn/US_Sales_WEB/ "/>
+		</list>
+	</section>
+	<section name="CommitWizard">
+		<item key="VWeight1" value="500"/>
+		<item key="VWeight2" value="500"/>
+		<item key="ShowCompare" value="false"/>
+	</section>
+</section>

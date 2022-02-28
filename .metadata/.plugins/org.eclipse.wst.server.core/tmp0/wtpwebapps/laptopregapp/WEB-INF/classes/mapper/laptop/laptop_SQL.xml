@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="laptop">
+
+
+	<select id="selectUserInform" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			select 
+				ROW_NUMBER() OVER(Partition By 1 Order By UserID ASC) AS Seq, 
+				UserID, 
+				UserNM, 
+				DEPTNM 
+			from VLGUser 
+			where UserType = 'I' 
+			and UserID like '10%'
+			and UserNM like '%' + #{UserNM} + '%'
+		]]>
+	</select>
+	
+	<select id="selectSerial" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT    
+				ROW_NUMBER() OVER(Partition By 1 Order By UserID ASC) AS Seq,       
+		        UserID,                
+		        UserName,                  
+		        DeptName,                  
+		        SerialNumber,               
+		        ProvideDate,                 
+		        ReturnDate,               
+		        Remark,            
+		        ProvideID,            
+		        ReturnID,            
+		        Path            
+		    FROM TCMCoronaNotebookHistory 
+		    WHERE 1=1              
+		    AND ISNULL(DelTag,'') <> 'D'       
+			AND SerialNumber = #{returnSerial}
+			AND ISNULL(Returndate, '') = ''
+			ORDER BY ProvideDate DESC
+		]]>
+	</select>
+	
+	<select id="save" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			EXEC SCMCoronaNotebookQry_APP 'S', #{UserID}, #{UserNM}, #{DEPTNM}, #{Serial}, '', '', '', '', '', 'APP', ''
+		]]>
+	</select>
+	
+	<select id="returnlaptop" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			EXEC SCMCoronaNotebookQry_APP 'R', #{UserID}, #{UserNM}, #{DEPTNM}, #{Serial}, '', '', '', '', '', 'APP', ''
+		]]>
+	</select>
+
+ 
+</mapper>

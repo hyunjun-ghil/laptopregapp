@@ -1,0 +1,10 @@
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.propertiesfileeditor.PropertyKeyHyperlinkDetector=true
+org.eclipse.wst.jsdt.internal.ui.javaeditor.JavaElementHyperlinkDetector=true
+org.eclipse.wst.jsdt.web.ui.JSDTHyperlinkDetector.HTML=true
+org.eclipse.wst.jsdt.web.ui.JSDTHyperlinkDetector.SCRIPT=true
+org.eclipse.wst.jsdt.web.ui.JSDTHyperlinkDetector.SCRIPT.events=true
+overviewRuler_migration=migrated_3.1

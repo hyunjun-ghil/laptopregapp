@@ -1,0 +1,43 @@
+package com.KD.laptopRegApp.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
+import com.kdnavien.crmcn.common.dao.AbstractDAO;
+
+@Repository("laptopDAO")
+public class laptopDAO extends AbstractDAO{
+	
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectBoardListPaging(Map<String, Object> map) throws Exception{
+		return selectPagingList("board.selectBoardCnt", "board.selectBoardList", map);
+	}
+		
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectList("board.selectServiceList", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectBoardView(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>)selectOne("board.selectServiceView", map);
+	}
+	
+
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectBoardView2(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>)selectOne("board.selectServiceView2", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectBoardViewFile(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectList("board.selectServiceViewFile", map);
+	}
+	
+	
+	
+}

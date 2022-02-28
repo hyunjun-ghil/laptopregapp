@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;stocksearch.jsp&apos; to &apos;ussales&apos;&#x0D;&#x0A;- Original project: &apos;US_Sales_WEB&apos;&#x0D;&#x0A;- Destination element: &apos;ussales&apos;&#x0D;&#x0A;- Original element: &apos;stocksearch.jsp&apos;" description="Copy file" element1="src/main/webapp/WEB-INF/jsp/ussales/stocksearch.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1639377269454" target="/US_Sales_WEB/src/main/webapp/WEB-INF/jsp/ussales" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+jdbc.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.url=jdbc:sqlserver://192.168.35.155;databaseName=CMS
+jdbc.username=cms
+jdbc.password=cmd

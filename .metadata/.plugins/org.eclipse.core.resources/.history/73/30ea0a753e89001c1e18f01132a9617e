@@ -1,0 +1,49 @@
+package com.KD.laptopRegApp.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.kdnavien.crmcn.board.dao.BoardDAO;
+import com.kdnavien.crmcn.common.util.CustomFileUtils;
+
+@Service("boardService")
+public class BoardImpl implements BoardService{
+	Logger log = Logger.getLogger(this.getClass());
+		
+	@Resource(name="boardDAO")
+	private BoardDAO boardDAO;
+
+
+	@Resource(name="fileUtils")
+	private CustomFileUtils fileUtils;
+			
+	
+	@Override
+	public Map<String, Object> selectBoardList(Map<String, Object> map) throws Exception {
+		Map<String,Object> resultMap =new HashMap<String,Object>();
+		
+		map.put("GUBUN", "3");
+		resultMap.put("list1", boardDAO.selectBoardList(map));
+		
+		map.put("GUBUN", "2");
+		resultMap.put("list2", boardDAO.selectBoardList(map));
+
+		
+		return resultMap;
+	}
+
+
+	@Override
+	public Map<String, Object> selectBoardView(Map<String, Object> map) throws Exception {
+		return boardDAO.selectBoardView(map);
+	}
+
+	
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="laptop">
+
+
+	<select id="selectUserInform" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			EXEC USP_Sales_Web_Login_Q #{USERID}, #{USERPASS}
+		]]>
+	</select>
+	
+	<select id="selectCustomerInform" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			select LTRIM(RTRIM(CUSTOMER_ID)) as CUSTOMER_ID, LTRIM(RTRIM(NAME)) as NAME from CUSTOMER_MASTER
+		]]>
+	</select>
+
+ 
+</mapper>

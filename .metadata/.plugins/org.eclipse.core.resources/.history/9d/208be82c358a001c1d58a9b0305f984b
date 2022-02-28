@@ -1,0 +1,59 @@
+package com.KD.laptopRegApp.controller;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.KD.laptopRegApp.service.laptopService;
+import com.KD.laptopRegApp.common.*;;
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class laptopController {
+	
+
+	@Resource(name = "laptopService")
+	private laptopService laptopservice;
+	
+	private static final Logger logger = LoggerFactory.getLogger(laptopController.class);
+	
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	public String home(Locale locale, Model model, CommandMap commandMap, HttpServletResponse response) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/registerpage");
+		List<Map<String, Object>> list = laptopservice.selectUserInform();
+		
+		JSONObject jsonObject = new JSONObject();
+		JSONObject child_jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		
+		for(int i=0; i<list.size(); i++) {
+			child_jsonObject = new JSONObject();
+			child_jsonObject.put("userid", list.get(i).get("UserId"));
+			child_jsonObject.put("usernm", list.get(i).get("UserNm"));
+			child_jsonObject.put("deptnm", list.get(i).get("DEPTNM"));
+			jsonArray.put(child_jsonObject);
+		}
+		jsonObject.put("customer", jsonArray);
+		mv.addObject("customer", jsonObject.getJSONArray("customer"));
+		
+		return mv;
+	}
+	
+}
