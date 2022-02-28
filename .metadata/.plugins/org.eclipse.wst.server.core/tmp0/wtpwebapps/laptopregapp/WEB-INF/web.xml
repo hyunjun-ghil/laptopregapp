@@ -10,7 +10,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
-     <security-constraint>
+    <security-constraint>
         <web-resource-collection>
                 <web-resource-name>Automatic SSL Forward</web-resource-name>
                 <url-pattern>/*</url-pattern>
@@ -22,7 +22,7 @@
                       CONFIDENTIAL
               </transport-guarantee>
       </user-data-constraint>
-    </security-constraint>
+    </security-constraint>  
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>

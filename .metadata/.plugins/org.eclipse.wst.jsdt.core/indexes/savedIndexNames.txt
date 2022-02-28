@@ -1,8 +1,6 @@
-INDEX VERSION 1.4+D:\Project\Spring\US_Sales_Web\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-478206350.index
-145139574.index
-1072691620.index
-1896912005.index
-3937606769.index
-2203959352.index
+INDEX VERSION 1.4+D:\Project\Spring\laptopregapp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 419817364.index
+3504076371.index
+601520994.index
+4206749194.index
+573938379.index
